@@ -14,7 +14,8 @@ use WebFuelAgency\Socialite\Http\Controllers\SocialiteController;
 |
 */
 
-Route::get('auth', [SocialiteController::class, 'index']);
-Route::get('auth/{provider}', [SocialiteController::class, 'redirect']);
-Route::get('auth/{provider}/callback', [SocialiteController::class, 'handle']);
-
+Route::group(['middleware' => ['web']], function () {
+    Route::get('auth', [SocialiteController::class, 'index']);
+    Route::get('auth/{provider}', [SocialiteController::class, 'redirect']);
+    Route::get('auth/{provider}/callback', [SocialiteController::class, 'handle']);
+});
