@@ -1,0 +1,43 @@
+{
+    "name": "webfuelagency/socialite",
+    "description": "This package will extend functionality for the laravel socialite package",
+    "type": "library",
+    "require": {
+        "laravel/socialite": "5.x-dev",
+        "doctrine/dbal": "3.6.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "WebFuelAgency\\Socialite\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "WebFuelAgency\\Socialite\\Tests\\": "tests",
+          "WebFuelAgency\\Socialite\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "authors": [
+        {
+            "name": "Richard Galolo",
+            "email": "richardgalolo@webfuelagency.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-f": "vendor/bin/phpunit --filter"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WebFuelAgency\\Socialite\\SocialiteServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.2.0",
+        "phpunit/phpunit": "^10.1@dev"
+    }
+}
