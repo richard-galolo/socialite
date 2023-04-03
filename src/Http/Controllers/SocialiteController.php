@@ -2,9 +2,7 @@
 
 namespace WebFuelAgency\Socialite\Http\Controllers;
 
-use App\Providers\RouteServiceProvider;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use WebFuelAgency\Socialite\Tests\User;
 
@@ -15,12 +13,20 @@ class SocialiteController extends Controller
         return view('socialite::index');
     }
 
-    public function redirectToProvider($provider)
+    /**
+     * Redirect User to Provider to approve OAuth Handshake.
+     * @return Redirect
+     */
+    public function redirect($provider)
     {
         return Socialite::driver($provider)->redirect();
     }
 
-    public function handleProviderCallback($provider)
+    /**
+     * Handle Return Request from Provider OAuth API
+     * @return Redirect
+     */
+    public function handle($provider)
     {
         try {
             $providerUser = Socialite::driver($provider)->user();
@@ -36,9 +42,9 @@ class SocialiteController extends Controller
                 ]);
             }
 
-            Auth::login($user, true);
+            auth()->login($user, true);
 
-            return redirect('/home');
+            return redirect(config('socialite.redirect', '/home'));
         } catch (\Exception $exception) {
             return redirect()
                 ->back()

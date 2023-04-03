@@ -25,9 +25,9 @@ class SocialiteServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'socialite');
 
         if ($this->app->runningInConsole()) {
-            // $this->publishes([
-            //     __DIR__.'/../config/services.php' => config_path('socialite.php'),
-            // ], 'config');
+            $this->publishes([
+                __DIR__.'/../config/socialite.php' => config_path('socialite.php'),
+            ], 'config');
 
             // $this->commands([
             //     InstallSocialitePackage::class

@@ -1,12 +1,24 @@
 {
     "name": "webfuelagency/socialite",
-    "description": "This package will extend functionality for the laravel socialite package",
+    "description": "This package aims to extend the functionalities of the Laravel Socialite package by adding new features or improving existing ones.",
     "type": "library",
+    "homepage": "https://github.com/richard-galolo/socialite",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Richard Galolo",
+            "email": "richardgalolo@webfuelagency.com",
+            "role": "developer"
+        }
+    ],
     "require": {
-        "laravel/socialite": "5.x-dev",
+        "laravel/socialite": "v5.6.1",
         "doctrine/dbal": "3.6.1"
     },
-    "license": "MIT",
+    "require-dev": {
+        "orchestra/testbench": "^8.2.0",
+        "phpunit/phpunit": "^10.1@dev"
+    },
     "autoload": {
         "psr-4": {
             "WebFuelAgency\\Socialite\\": "src/"
@@ -14,17 +26,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-          "WebFuelAgency\\Socialite\\Tests\\": "tests",
-          "WebFuelAgency\\Socialite\\Database\\Factories\\": "database/factories"
+            "WebFuelAgency\\Socialite\\Tests\\": "tests",
+            "WebFuelAgency\\Socialite\\Database\\Factories\\": "database/factories"
         }
     },
-    "authors": [
-        {
-            "name": "Richard Galolo",
-            "email": "richardgalolo@webfuelagency.com"
-        }
-    ],
-    "minimum-stability": "dev",
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-f": "vendor/bin/phpunit --filter"
@@ -36,8 +41,9 @@
             ]
         }
     },
-    "require-dev": {
-        "orchestra/testbench": "^8.2.0",
-        "phpunit/phpunit": "^10.1@dev"
-    }
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
